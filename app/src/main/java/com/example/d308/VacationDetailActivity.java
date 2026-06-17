@@ -15,38 +15,8 @@ public class VacationDetailActivity extends AppCompatActivity {
     private Vacation currentVacation;
     private int vacationId = -1;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vacation_detail);
-
-        repository = new VacationRepository(this);
-        editTitle = findViewById(R.id.edit_title);
-        editHotel = findViewById(R.id.edit_hotel);
-        editStart = findViewById(R.id.edit_start_date);
-        editEnd = findViewById(R.id.edit_end_date);
-
-        vacationId = getIntent().getIntExtra("vacationId", -1);
-        if (vacationId != -1) {
-            new Thread(() -> {
-                currentVacation = repository.getVacationById(vacationId);
-                runOnUiThread(() -> {
-                    editTitle.setText(currentVacation.title);
-                    editHotel.setText(currentVacation.hotelName);
-                    editStart.setText(currentVacation.startDate);
-                    editEnd.setText(currentVacation.endDate);
-                });
-            }).start();
-        }
-
-        Button saveButton = findViewById(R.id.button_save);
-        saveButton.setOnClickListener(v -> saveVacation());
-
-        Button deleteButton = findViewById(R.id.button_delete);
-        deleteButton.setOnClickListener(v -> deleteVacation());
-    }
-
     private void saveVacation() {
+
         if (currentVacation == null) currentVacation = new Vacation();
         currentVacation.title = editTitle.getText().toString().trim();
         currentVacation.hotelName = editHotel.getText().toString().trim();
@@ -58,6 +28,7 @@ public class VacationDetailActivity extends AppCompatActivity {
         } else {
             repository.update(currentVacation);
         }
+
         finish();
     }
 
