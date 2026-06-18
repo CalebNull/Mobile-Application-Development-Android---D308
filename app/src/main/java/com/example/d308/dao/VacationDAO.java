@@ -1,4 +1,4 @@
-package com.example.d308.entity.dao;
+package com.example.d308.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.*;
@@ -22,5 +22,5 @@ public interface VacationDAO {
     LiveData<List<Vacation>> getAllVacations();
 
     @Query("SELECT * FROM vacations WHERE vacationId = :id")
-    LiveData<List<Vacation>> getVacationById(int id);
+    LiveData<Vacation> getVacationById(int id);
 }

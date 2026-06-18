@@ -17,9 +17,9 @@ public class Excursion {
     }
 
     public int getExcursionId() { return excursionId; }
-    public void setExcursionId(int excursionId) { this.excursionId = excursionId; }
+    public void setExcursionId(int excursionId) {this.excursionId = excursionId; }
     public int getVacationId() { return vacationId; }
-    public void setVacationId(int vacationId) { this.vacationId = vacationId; }
+    public void getVacationId(int vacationId) { this.vacationId = vacationId; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
 }

@@ -1,4 +1,4 @@
-package com.example.d308.entity.dao;
+package com.example.d308.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -9,6 +9,7 @@ import java.util.List;
 
 @Dao
 public interface ExcursionDAO {
+
     @Query("SELECT * FROM excursions WHERE vacationId = :vacationId")
-    LiveData<List<Excursion>> getAllExcursionsForVacation(int vacationId);
+    LiveData<List<Excursion>> getExcursionsForVacation(int vacationId);
 }
