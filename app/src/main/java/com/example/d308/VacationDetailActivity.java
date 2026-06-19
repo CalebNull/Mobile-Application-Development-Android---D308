@@ -8,7 +8,7 @@ import com.example.d308.entity.Vacation;
 public class VacationDetailActivity extends AppCompatActivity {
 
     private VacationRepository repository;
-    private EditText editTitle;
+    private EditText editTitle,  editHotelName, editStartDate, editEndDate;
     private Vacation currentVacation;
 
     @Override
@@ -19,12 +19,16 @@ public class VacationDetailActivity extends AppCompatActivity {
         repository = new VacationRepository(getApplication());
         editTitle = findViewById(R.id.editVacationTitle);
 
+        // B3a Displays detailed view of vacation information
         int vacationId = getIntent().getIntExtra("vacationId", -1);
         if (vacationId != -1) {
             repository.getVacationById(vacationId).observe(this, vacation -> {
                 if (vacation != null) {
                     currentVacation = vacation;
                     editTitle.setText(vacation.getTitle());
+                    editHotelName.setText(vacation.getHotelName());
+                    editStartDate.setText(vacation.getStartDate());
+                    editEndDate.setText(vacation.getEndDate());
                 }
             });
         }
