@@ -38,15 +38,22 @@ public class VacationDetailActivity extends AppCompatActivity {
     }
 
     private void saveVacation() {
+        // B3b Enter, Edit, and Delete vacation
         String title = editTitle.getText().toString().trim();
+        String hotelName = editHotelName.getText().toString().trim();
+        String startDate = editStartDate.getText().toString().trim();
+        String endDate = editEndDate.getText().toString().trim();
         if (title.isEmpty()) {
             Toast.makeText(this, "Title is required", Toast.LENGTH_SHORT).show();
             return;
         }
         if (currentVacation == null) {
-            repository.insert(new Vacation(title));
+            repository.insert(new Vacation(title, hotelName, startDate, endDate));
         } else {
             currentVacation.setTitle(title);
+            currentVacation.setHotelName(hotelName);
+            currentVacation.setStartDate(startDate);
+            currentVacation.setEndDate(endDate);
             repository.update(currentVacation);
         }
         finish();
