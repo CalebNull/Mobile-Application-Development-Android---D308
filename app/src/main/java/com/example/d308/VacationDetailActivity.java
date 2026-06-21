@@ -5,11 +5,15 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.d308.entity.Vacation;
 
+import java.util.Date;
+
+
 public class VacationDetailActivity extends AppCompatActivity {
 
     private VacationRepository repository;
     private EditText editTitle,  editHotelName, editStartDate, editEndDate;
     private Vacation currentVacation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class VacationDetailActivity extends AppCompatActivity {
         String hotelName = editHotelName.getText().toString().trim();
         String startDate = editStartDate.getText().toString().trim();
         String endDate = editEndDate.getText().toString().trim();
+
         if (title.isEmpty()) {
             Toast.makeText(this, "Title is required", Toast.LENGTH_SHORT).show();
             return;
